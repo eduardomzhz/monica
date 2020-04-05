@@ -1,0 +1,15 @@
+.DS_Store
+node_modules/
+platforms/
+plugins/
+www/
+npm-debug.log
+yarn-error.log
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.apk
+.editorconfig
+package-lock.json
