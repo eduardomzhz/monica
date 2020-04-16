@@ -16,6 +16,7 @@
         <b-timepicker
           v-model="today"
           :enable-seconds="false"
+          :mobile-native="false"
           :hour-format="'12'">
         </b-timepicker>
       </div>
@@ -54,13 +55,20 @@ export default {
     addFeed() {
       let todayDate = this.formatDate(this.today);
       this.feed.time = this.formatTime(this.today);
+      this.feed.quantity = Number(this.feed.quantity);
       let feedDays = JSON.parse(localStorage.getItem('feedDays'));
       let currentFeedDay = feedDays.find(day => day.date === todayDate);
       let missingCurrentFeedDay = !currentFeedDay;
       if (missingCurrentFeedDay) {
         currentFeedDay = { date: todayDate, feeds: [] };
       }
-      currentFeedDay.feeds.push(this.feed);
+      let feedsTime = currentFeedDay.feeds.map(feed => this.toSortTime(feed.time));
+      let nextIndex = feedsTime.findIndex(time => time > this.toSortTime(this.feed.time));
+      if (nextIndex > -1) {
+        currentFeedDay.feeds.splice(nextIndex, 0, this.feed);
+      } else {
+        currentFeedDay.feeds.push(this.feed);
+      }
       if (missingCurrentFeedDay) {
         feedDays.push(currentFeedDay);
       } else {
@@ -70,12 +78,17 @@ export default {
       localStorage.setItem('feedDays', JSON.stringify(feedDays));
       this.resetForm();
     },
+    findNextTimeIndex(time, feeds) {
+      let timesArray = feeds.map(feed => this.toSortTime(feed.time));
+      return timesArray.reduce((prev, curr) => Math.abs(curr - time) < Math.abs(prev - time) ? curr : prev);
+    },
     formatDate(date) {
       return [date.getDate(), date.getMonth() + 1, date.getFullYear()]
         .map(value => value < 10 ? `0${value}` : `${value}`).join('/');
     },
     formatTime(date) {
-      return date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+      let timeString = date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+      return `${timeString.length < 8 ? 0 + timeString : timeString}`;
     },
     resetForm() {
       this.today = new Date();
@@ -83,7 +96,16 @@ export default {
         time: null,
         quantity: null
       };
-    }
+    },
+    toSortDate(dateString) {
+      return Number(dateString.split('/').reverse().join(''));
+    },
+    toSortTime(timeString) {
+      let [time, convention] = timeString.split(' ');
+      let [hours, minutes] = time.split(':');
+      hours = (hours === '12' && convention === 'PM') ? hours : '00';
+      return Number(`${hours}${minutes}`) + (convention === 'PM' ? 1200 : 0);
+    },
   }
 }
 </script>
