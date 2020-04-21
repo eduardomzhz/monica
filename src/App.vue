@@ -1,23 +1,18 @@
 <template>
   <div class="app container">
-    <home />
-    <feed-form />
-    <feed-list />
+    <router-view />
+    <navigation />
   </div>
 </template>
 
 <script>
-import FeedForm from './components/FeedForm';
-import FeedList from './components/FeedList';
-import Home from './components/Home';
+import Navigation from './components/Navigation';
 import { FeedTracking } from './models';
 
 export default {
   name: 'app',
   components: {
-    FeedForm,
-    FeedList,
-    Home
+    Navigation
   },
   data() {
     return { }
@@ -35,5 +30,12 @@ export default {
 <style scoped>
 .app {
   padding: 2em;
+  height: 100vh;
+}
+.app > .navigation {
+  bottom: 0;
+  padding: 1em 0;
+  position: absolute;
+  width: 90%;
 }
 </style>

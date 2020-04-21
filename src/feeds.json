@@ -1,0 +1,328 @@
+[
+    { 
+        "date": "20200324", 
+        "feeds": [
+            { "time": "0220", "quantity": 2 },
+            { "time": "0540", "quantity": 1.5 },
+            { "time": "0750", "quantity": 1.5 },
+            { "time": "1020", "quantity": 2 },
+            { "time": "1240", "quantity": 3 },
+            { "time": "1530", "quantity": 3 },
+            { "time": "1820", "quantity": 2 },
+            { "time": "2040", "quantity": 2.5 }
+        ] 
+    },
+    { 
+        "date": "20200325", 
+        "feeds": [
+            { "time": "0140", "quantity": 2 },
+            { "time": "0540", "quantity": 3 },
+            { "time": "1000", "quantity": 2 },
+            { "time": "1315", "quantity": 3 },
+            { "time": "1807", "quantity": 3 },
+            { "time": "2100", "quantity": 2 }
+        ] 
+    },
+    { 
+        "date": "20200326", 
+        "feeds": [
+            { "time": "0000", "quantity": 1 },
+            { "time": "0300", "quantity": 3 },
+            { "time": "0630", "quantity": 3 },
+            { "time": "1030", "quantity": 3 },
+            { "time": "1330", "quantity": 3 },
+            { "time": "1620", "quantity": 3 },
+            { "time": "1930", "quantity": 3 },
+            { "time": "2120", "quantity": 1 },
+            { "time": "2330", "quantity": 1.5 }
+        ] 
+    },
+    { 
+        "date": "20200327", 
+        "feeds": [
+            { "time": "0318", "quantity": 2.5 },
+            { "time": "0600", "quantity": 2 },
+            { "time": "0840", "quantity": 2 },
+            { "time": "1200", "quantity": 3 },
+            { "time": "1500", "quantity": 2 },
+            { "time": "1630", "quantity": 3 },
+            { "time": "2200", "quantity": 2 }
+        ] 
+    },
+    { 
+        "date": "20200328", 
+        "feeds": [
+            { "time": "0200", "quantity": 2.5 },
+            { "time": "0530", "quantity": 2.5 },
+            { "time": "0830", "quantity": 2 },
+            { "time": "1230", "quantity": 4 },
+            { "time": "1520", "quantity": 1.5 },
+            { "time": "1737", "quantity": 3 },
+            { "time": "2020", "quantity": 3 },
+            { "time": "2300", "quantity": 1.5 }
+        ] 
+    },
+    { 
+        "date": "20200329", 
+        "feeds": [
+            { "time": "0200", "quantity": 3 },
+            { "time": "0700", "quantity": 3 },
+            { "time": "1050", "quantity": 2 },
+            { "time": "1400", "quantity": 2.5 },
+            { "time": "1627", "quantity": 3 },
+            { "time": "1840", "quantity": 1 },
+            { "time": "2030", "quantity": 3 },
+            { "time": "2230", "quantity": 1 }
+        ] 
+    },
+    { 
+        "date": "20200330", 
+        "feeds": [
+            { "time": "0250", "quantity": 4 },
+            { "time": "0630", "quantity": 1.5 },
+            { "time": "1000", "quantity": 1.5 },
+            { "time": "1240", "quantity": 2 },
+            { "time": "1622", "quantity": 3 },
+            { "time": "1930", "quantity": 2 },
+            { "time": "2230", "quantity": 2 }
+        ] 
+    },
+    { 
+        "date": "20200331", 
+        "feeds": [
+            { "time": "0220", "quantity": 3 },
+            { "time": "0600", "quantity": 3 },
+            { "time": "0850", "quantity": 2 },
+            { "time": "1230", "quantity": 3 },
+            { "time": "1540", "quantity": 3 },
+            { "time": "2000", "quantity": 3.5 },
+            { "time": "2300", "quantity": 1.5 }
+        ] 
+    },
+    { 
+        "date": "20200401", 
+        "feeds": [
+            { "time": "0320", "quantity": 3 },
+            { "time": "06300", "quantity": 2 },
+            { "time": "1030", "quantity": 4 },
+            { "time": "1310", "quantity": 1 },
+            { "time": "1450", "quantity": 2.5 },
+            { "time": "1750", "quantity": 3 },
+            { "time": "2140", "quantity": 3 }
+        ] 
+    },
+    { 
+        "date": "20200402", 
+        "feeds": [
+            { "time": "0140", "quantity": 3 },
+            { "time": "0440", "quantity": 3 },
+            { "time": "0920", "quantity": 3 },
+            { "time": "1240", "quantity": 2 },
+            { "time": "1550", "quantity": 3 },
+            { "time": "1813", "quantity": 2 },
+            { "time": "2120", "quantity": 3 }
+        ] 
+    },
+    { 
+        "date": "20200403", 
+        "feeds": [
+            { "time": "0030", "quantity": 2.5 },
+            { "time": "0420", "quantity": 3 },
+            { "time": "0820", "quantity": 2 },
+            { "time": "1320", "quantity": 2 },
+            { "time": "1630", "quantity": 2 },
+            { "time": "1920", "quantity": 3 },
+            { "time": "2250", "quantity": 3 }
+        ] 
+    },
+    { 
+        "date": "20200404", 
+        "feeds": [
+            { "time": "0150", "quantity": 3 },
+            { "time": "0530", "quantity": 3 },
+            { "time": "0900", "quantity": 3 },
+            { "time": "1150", "quantity": 1 },
+            { "time": "1445", "quantity": 3.5 },
+            { "time": "1800", "quantity": 2.5 },
+            { "time": "2040", "quantity": 4.5 },
+            { "time": "2320", "quantity": 0.5 }
+        ] 
+    },
+    { 
+        "date": "20200405", 
+        "feeds": [
+            { "time": "0300", "quantity": 4 },
+            { "time": "0640", "quantity": 2.5 },
+            { "time": "0800", "quantity": 0.5 },
+            { "time": "1100", "quantity": 2 },
+            { "time": "1350", "quantity": 3 },
+            { "time": "1640", "quantity": 2 },
+            { "time": "1940", "quantity": 2 },
+            { "time": "2200", "quantity": 1 },
+            { "time": "2240", "quantity": 3 }
+        ] 
+    },
+    { 
+        "date": "20200406", 
+        "feeds": [
+            { "time": "0200", "quantity": 2 },
+            { "time": "0500", "quantity": 3.5 },
+            { "time": "0913", "quantity": 2 },
+            { "time": "1300", "quantity": 3 },
+            { "time": "1730", "quantity": 2 },
+            { "time": "2040", "quantity": 3 },
+            { "time": "2355", "quantity": 3 }
+        ] 
+    },
+    { 
+        "date": "20200407", 
+        "feeds": [
+            { "time": "0330", "quantity": 2 },
+            { "time": "0630", "quantity": 1 },
+            { "time": "0910", "quantity": 2 },
+            { "time": "1220", "quantity": 2 },
+            { "time": "1530", "quantity": 3.5 },
+            { "time": "1800", "quantity": 2 },
+            { "time": "2135", "quantity": 2 },
+            { "time": "2345", "quantity": 3 }
+        ] 
+    },
+    { 
+        "date": "20200408", 
+        "feeds": [
+            { "time": "0240", "quantity": 2 },
+            { "time": "0600", "quantity": 3 },
+            { "time": "0900", "quantity": 1 },
+            { "time": "1120", "quantity": 3 },
+            { "time": "1400", "quantity": 2 },
+            { "time": "1630", "quantity": 2 },
+            { "time": "1810", "quantity": 3 },
+            { "time": "2140", "quantity": 2.5 },
+            { "time": "2330", "quantity": 2 }
+        ] 
+    },
+    { 
+        "date": "20200409", 
+        "feeds": [
+            { "time": "0210", "quantity": 3.5 },
+            { "time": "0530", "quantity": 3 },
+            { "time": "0900", "quantity": 2.5 },
+            { "time": "1300", "quantity": 3 },
+            { "time": "1640", "quantity": 3 },
+            { "time": "2000", "quantity": 3 },
+            { "time": "2220", "quantity": 2.5 }
+        ] 
+    },
+    { 
+        "date": "20200410", 
+        "feeds": [
+            { "time": "0110", "quantity": 2.5 },
+            { "time": "0400", "quantity": 3 },
+            { "time": "0740", "quantity": 2.5 },
+            { "time": "1215", "quantity": 3 },
+            { "time": "1520", "quantity": 3 },
+            { "time": "1855", "quantity": 1.5 },
+            { "time": "2000", "quantity": 2.5 },
+            { "time": "2300", "quantity": 3 }
+        ] 
+    },
+    { 
+        "date": "20200411", 
+        "feeds": [
+            { "time": "0140", "quantity": 2 },
+            { "time": "0430", "quantity": 3 },
+            { "time": "0940", "quantity": 3 },
+            { "time": "1240", "quantity": 3 },
+            { "time": "1620", "quantity": 3 },
+            { "time": "2000", "quantity": 3 },
+            { "time": "2300", "quantity": 3 }
+        ] 
+    },
+    { 
+        "date": "20200412", 
+        "feeds": [
+            { "time": "0300", "quantity": 3 },
+            { "time": "0600", "quantity": 3 },
+            { "time": "1110", "quantity": 3.5 },
+            { "time": "1420", "quantity": 3 },
+            { "time": "1720", "quantity": 3 },
+            { "time": "1920", "quantity": 3 },
+            { "time": "2217", "quantity": 2.5 }
+        ] 
+    },
+    { 
+        "date": "20200413", 
+        "feeds": [
+            { "time": "0110", "quantity": 2.5 },
+            { "time": "0400", "quantity": 3 },
+            { "time": "0650", "quantity": 2.5 },
+            { "time": "1100", "quantity": 3.5 },
+            { "time": "1440", "quantity": 3 },
+            { "time": "1730", "quantity": 3 },
+            { "time": "2020", "quantity": 3 },
+            { "time": "2330", "quantity": 3 }
+        ] 
+    },
+    { 
+        "date": "20200414", 
+        "feeds": [
+            { "time": "0240", "quantity": 2 },
+            { "time": "0510", "quantity": 4 },
+            { "time": "1100", "quantity": 3 },
+            { "time": "1650", "quantity": 4 },
+            { "time": "1950", "quantity": 2 },
+            { "time": "2210", "quantity": 2 },
+            { "time": "2230", "quantity": 2 }
+        ] 
+    },
+    { 
+        "date": "20200415", 
+        "feeds": [
+            { "time": "0230", "quantity": 2.5 },
+            { "time": "0440", "quantity": 3 },
+            { "time": "0800", "quantity": 1.5 },
+            { "time": "0930", "quantity": 2.5 },
+            { "time": "1250", "quantity": 3 },
+            { "time": "1540", "quantity": 3 },
+            { "time": "1820", "quantity": 3 },
+            { "time": "2130", "quantity": 4 }
+        ] 
+    },
+    { 
+        "date": "20200416", 
+        "feeds": [
+            { "time": "0030", "quantity": 3 },
+            { "time": "0300", "quantity": 2.5 },
+            { "time": "0600", "quantity": 3 },
+            { "time": "0900", "quantity": 3 },
+            { "time": "1300", "quantity": 4 },
+            { "time": "1740", "quantity": 3 },
+            { "time": "2140", "quantity": 4 }
+        ] 
+    },
+    { 
+        "date": "20200417", 
+        "feeds": [
+            { "time": "0120", "quantity": 3 },
+            { "time": "0450", "quantity": 3 },
+            { "time": "0800", "quantity": 3 },
+            { "time": "1130", "quantity": 3 },
+            { "time": "1400", "quantity": 3 },
+            { "time": "1715", "quantity": 3 },
+            { "time": "2000", "quantity": 4 }
+        ] 
+    },
+    { 
+        "date": "20200418", 
+        "feeds": [
+            { "time": "0010", "quantity": 3 },
+            { "time": "0330", "quantity": 1.5 },
+            { "time": "0833", "quantity": 2 },
+            { "time": "1130", "quantity": 3 },
+            { "time": "1440", "quantity": 3 },
+            { "time": "1750", "quantity": 3 },
+            { "time": "2100", "quantity": 3.5 },
+            { "time": "2340", "quantity": 2.5 }
+        ] 
+    }
+]

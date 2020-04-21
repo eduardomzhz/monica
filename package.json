@@ -1,7 +1,7 @@
 {
   "name": "monica",
   "description": "Mónica's feed tracking app.",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "author": "Eduardo Martínez <eduardo.mzhz@gmail.com>",
   "license": "MIT",
   "private": true,
@@ -14,7 +14,8 @@
   "dependencies": {
     "buefy": "^0.8.15",
     "cordova-android": "^8.1.0",
-    "vue": "^2.5.11"
+    "vue": "^2.5.11",
+    "vue-router": "^3.1.6"
   },
   "browserslist": [
     "> 1%",
