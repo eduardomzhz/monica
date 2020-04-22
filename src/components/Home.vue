@@ -1,15 +1,24 @@
 <template>
-  <div class="level">
-    <div class="level-item has-text-centered">
-      <div>
+  <div class="level flex-columns">
+    <div class="level-item has-text-centered full-width">
+      <div class="full-width">
         <p class="heading">ULTIMA TOMA</p>
-        <p class="title">{{ lastFeedTime || '--' }} &rarr; {{ lastFeedQuantity || 0 }} oz</p>
+        <p class="title flex">
+          <span>{{ lastFeedTime || '--' }}</span>
+          <span>{{ lastFeedQuantity || 0 }} oz</span>
+        </p>
       </div>
     </div>
-    <div class="level-item has-text-centered">
-      <div>
-        <p class="heading">TOTAL DEL DÍA</p>
-        <p class="title">{{ totalQuantity || 0 }} oz</p>
+    <div class="level-item has-text-centered full-width">
+      <div class="full-width flex">
+        <div>
+          <p class="heading">SIGUIENTE TOMA</p>
+          <p class="title">{{ nextFeedTime || '--' }}</p>
+        </div>
+        <div>
+          <p class="heading">TOTAL DEL DÍA</p>
+          <p class="title">{{ totalQuantity || 0 }} oz</p>
+        </div>
       </div>
     </div>
     <div class="level-item has-text-centered">
@@ -27,6 +36,7 @@ import { FeedDay, FeedTracking } from '../models';
 export default {
   data() {
     return {
+      nextFeedTime: null,
       lastFeedTime: null,
       lastFeedQuantity: 0,
       totalQuantity: 0,
@@ -69,3 +79,12 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.level-item {
+  padding: 2em 0;
+}
+.level-item .title {
+  font-size: 2.2em;
+}
+</style>

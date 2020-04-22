@@ -1,36 +1,48 @@
 <template>
-  <form>
-    <div class="field">
-      <label class="label">FECHA:</label>
-      <div class="control">
-        <b-datepicker
-          v-model="form.date"
-          :showWeekNumber="false"
-          :date-formatter="dateToString">
-        </b-datepicker>
+  <nav class="level flex flex-columns">
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">FECHA</p>
+        <div class="control">
+          <b-datepicker
+            v-model="form.date"
+            :showWeekNumber="false"
+            :date-formatter="dateToString">
+          </b-datepicker>
+        </div>
       </div>
     </div>
-    <div class="field">
-      <label class="label">HORA:</label>
-      <div class="control">
-        <b-timepicker
-          v-model="form.date"
-          :enable-seconds="false"
-          :mobile-native="false"
-          :hour-format="'12'">
-        </b-timepicker>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">HORA</p>
+        <div class="control">
+          <b-timepicker
+            v-model="form.date"
+            :enable-seconds="false"
+            :mobile-native="false"
+            :hour-format="'12'">
+          </b-timepicker>
+        </div>
       </div>
     </div>
-    <div class="field">
-      <label class="label">CANTIDAD:</label>
-      <div class="control">
-        <input type="number" class="input" v-model="form.quantity">
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">CANTIDAD</p>
+        <div class="control">
+          <input type="number" class="input" v-model="form.quantity">
+        </div>
       </div>
     </div>
-    <div class="field">
-      <button class="button" :disabled="!form.quantity" @click.prevent="save">AGREGAR</button>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading"></p>
+        <div class="field">
+          <button class="button" :disabled="!form.quantity" @click.prevent="save">GUARDAR</button>
+        </div>
+      </div>
     </div>
-  </form>
+  </nav>
+
 </template>
 
 <script>
@@ -73,3 +85,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.level-item {
+  padding: 1em 0;
+}
+</style>

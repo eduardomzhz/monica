@@ -40,8 +40,14 @@ export default {
       if (typeof(time) === 'string') {
         const hour = time.slice(0, 2);
         const minutes = time.slice(2, 4);
-        const fixedHour = hour > 12 ? `${hour < 10 ? 0 : ''}${hour - 12}` : hour; 
-        timeString = `${fixedHour}: ${minutes} ${hour > 11 ? 'PM' : 'AM'}`;
+        let fixedHour = (hour === '00')
+          ? 12
+          : (hour <= 12) 
+            ? hour
+            : (hour - 12 < 10)
+              ? `0${hour - 12}`
+              : `${hour - 12}`;
+        timeString = `${fixedHour}:${minutes} ${hour > 11 ? 'PM' : 'AM'}`;
       } else {
         timeString = time.toLocaleString('en-US', { 
           hour: 'numeric', 

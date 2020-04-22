@@ -1,16 +1,19 @@
 <template>
   <div>
-    <nav class="level">
-      <b-field label="FECHA" style="display: inline-block">
-        <b-select v-model="selectedDate" @input="setFeedDay">
-          <option
-            v-for="day in feedDays"
-            :value="day.date"
-            :key="day.date">
-            {{ dateToString(day.date) }}
-          </option>
-        </b-select>
-      </b-field>
+    <nav class="level flex space-between">
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">FECHA</p>
+          <b-select v-model="selectedDate" @input="setFeedDay">
+            <option
+              v-for="day in feedDays"
+              :value="day.date"
+              :key="day.date">
+              {{ dateToString(day.date) }}
+            </option>
+          </b-select>
+        </div>
+      </div>
       <div class="level-item has-text-centered">
         <div>
           <p class="heading">TOTAL DEL DÍA</p>
@@ -18,15 +21,23 @@
         </div>
       </div>
     </nav>
-    <b-table :data="selectedDay ? selectedDay.feeds : []">
-      <template slot-scope="props">
-        <b-table-column label="HORA">{{ timeToString(props.row.time) }}</b-table-column>
-        <b-table-column label="CANTIDAD">{{ props.row.quantity }} oz</b-table-column>
-        <b-table-column label="">
-          <button class="button" @click="removeFeed(props.row)">&times;</button>
-        </b-table-column>
-      </template>
-    </b-table>
+    <div v-if="selectedDay && selectedDay.feeds.length > 0">
+      <div class="flex border-bottom">
+        <span class="list-header">HORA</span>
+        <span class="list-header">CANTIDAD</span>
+        <span class="list-header"></span>
+      </div>
+      <div v-for="feed in (selectedDay ? selectedDay.feeds : [])" :key="feed.time" class="flex">
+        <span class="center">{{ timeToString(feed.time) }}</span>
+        <span class="center">{{ feed.quantity }} oz</span>
+        <span class="center">
+          <button class="button is-small" @click="removeFeed(feed)">&times;</button>
+        </span>
+      </div>
+    </div>
+    <div v-else class="no-results">
+      <p class="center">No hay elementos para mostrar.</p>
+    </div>
   </div>
 </template>
 
@@ -60,7 +71,7 @@ export default {
       if (feedDay) {
         this.selectedDay.feeds = feedDay.feeds;
       }
-      this.feedDays = feedTracking.days;
+      this.feedDays = feedTracking.days.sort((a, b) => b.date - a.date);
     },
     removeFeed(selectedFeed) {
       const storedTracking = this.getStorage('feedTracking');
@@ -76,3 +87,13 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.list-header {
+  color: #261338;
+  text-align: center;
+}
+.no-results {
+  padding: 2em 0;
+}
+</style>

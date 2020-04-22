@@ -2,8 +2,11 @@
   <div class="navigation">
     <div class="tabs is-toggle is-fullwidth">
       <ul>
-        <li v-for="tab in tabs" :key="tab.route">
-          <router-link :to="tab.route" @click="setActive(tab.route)">{{ tab.label }}</router-link>
+        <li v-for="(tab, index) in tabs" 
+          :key="tab.index" 
+          :class="{ 'is-active': tab.isActive }" 
+          @click="setActive(index)">
+          <router-link :to="tab.route">{{ tab.label }}</router-link>
         </li>
       </ul>
     </div>
@@ -34,8 +37,10 @@ export default {
     }
   },
   methods: {
-    setActive(route) {
-      this.tabs.forEach(tab => tab.isActive = (tab.route === route));
+    setActive(activeIndex) {
+      this.tabs.forEach((tab, index) => {
+        tab.isActive = (index === activeIndex)
+      });
     }
   }
 }
