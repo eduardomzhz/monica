@@ -1,7 +1,7 @@
 <template>
-  <div class="app">
+  <div class="app" :class="theme">
     <div class="container">
-      <router-view />
+      <router-view @updateSettings="update" />
     </div>
     <navigation />
     <span class="version">v{{ version }}</span>
@@ -19,7 +19,10 @@ export default {
     Navigation
   },
   data() {
-    return { version }
+    return { 
+      version,
+      theme: null
+    }
   },
   created() {
     let feedTracking = this.getStorage('feedTracking');
@@ -27,16 +30,49 @@ export default {
       feedTracking = new FeedTracking();
       this.setStorage('feedTracking', feedTracking);
     }
+    let settings = this.getStorage('settings');
+    if (!settings) {
+      settings = {
+        theme: 'default',
+        timeInterval: 3
+      };
+      this.setStorage('settings', settings);
+    }
+    this.update();
+  },
+  methods: {
+    update() {
+      let settings = this.getStorage('settings');
+      this.theme = settings.theme;
+    }
   }
 }
 </script>
 
 <style>
+:root {
+  --white: #f2ecf8;
+  --light-purple: #9966c8;
+  --purple: #663495;
+  --dark-purple: #4c2770;
+  --darker-purple: #261338;
+  --black: #0c0612; 
+}
 .app {
   padding: 2em;
   height: 100vh;
-  background-color: #8c54c1;
-  color: #f2ecf8;
+}
+.app.default {
+  background-color: var(--light-purple);
+  color: var(--white);
+}
+.app.light {
+  background-color: var(--white);
+  color: var(--black);
+}
+.app.dark {
+  background-color: var(--black);
+  color: var(--white);
 }
 .app > div:first-child {
   margin-bottom: 4em;
@@ -49,23 +85,23 @@ export default {
   width: 100%;
 }
 .app .tabs li {
-  background-color: #663495;
+  background-color: var(--purple);
 }
 .app .tabs li a {
-  border-color: #4c2770;
-  color: #f2ecf8;
+  border-color: var(--dark-purple);
+  color: var(--white);
 }
 .app .tabs li a:hover,
 .app .tabs li.is-active a,
 .app .tabs li.is-active {
-  background-color: #4c2770;
-  border-color: #4c2770;
-  color: #f2ecf8;
+  background-color: var(--dark-purple);
+  border-color: var(--dark-purple);
+  color: var(--white);
 }
 .app .button {
-  background-color: #663495;
-  border-color: #4c2770;
-  color: #f2ecf8;
+  background-color: var(--purple);
+  border-color: var(--dark-purple);
+  color: var(--white);
 }
 .app .select select,
 .app .input {
@@ -74,15 +110,74 @@ export default {
   border-bottom: 1px solid;
   border-radius: 0;
   box-shadow: none;
-  color: #f2ecf8;
   font-size: 1.2em;
   text-align: center;
 }
-.app .select:not(.is-multiple):not(.is-loading)::after {
-  border-color: #f2ecf8;
+.app.default .select select,
+.app.dark .select select,
+.app.default .input,
+.app.dark .input {
+  color: var(--white);
+}
+.app.light .select select,
+.app.light .input {
+  color: var(--black);
+}
+.app.default .select:not(.is-multiple):not(.is-loading)::after,
+.app.dark .select:not(.is-multiple):not(.is-loading)::after {
+  border-color: var(--white);
+}
+.app.light .select:not(.is-multiple):not(.is-loading)::after {
+  border-color: var(--purple);
 }
 .app .dropdown-item .select select {
-  color: #363636;
+  color: var(--black);
+}
+.app.default .b-radio.radio input[type="radio"]:checked + .check,
+.app.dark .b-radio.radio input[type="radio"]:checked + .check {
+  border-color: var(--white)  ;
+}
+.app.light .b-radio.radio input[type="radio"]:checked + .check {
+  border-color: var(--black)  ;
+}
+.app.default .b-radio.radio input[type="radio"] + .check::before,
+.app.dark .b-radio.radio input[type="radio"] + .check::before {
+  background-color: var(--white);
+}
+.app.light .b-radio.radio input[type="radio"] + .check::before {
+  background-color: var(--black);
+}
+.app.default .heading {
+  color: var(--darker-purple);
+}
+.app.light .heading {
+  color: var(--purple);
+}
+.app.dark .heading {
+  color: var(--light-purple);
+}
+.app.default .title,
+.app.dark .title {
+  color: var(--white);
+}
+.app.light .title {
+  color: var(--black);
+}
+.app.default .border-bottom,
+.app.dark .border-bottom {
+  border-bottom: 1px solid var(--white);
+}
+.app.light .border-bottom {
+  border-bottom: 1px solid var(--light-purple);
+}
+.app.default .list-header {
+  color: var(--darker-purple);
+}
+.app.light .list-header {
+  color: var(--purple);
+}
+.app.dark .list-header {
+  color: var(--light-purple);
 }
 .version {
   bottom: 0;
@@ -105,9 +200,6 @@ export default {
 .space-between {
   justify-content: space-between;
 }
-.border-bottom {
-  border-bottom: 1px solid whitesmoke;
-}
 .center {
   text-align: center;
 }
@@ -119,9 +211,5 @@ export default {
 }
 .heading {
   font-size: 14px;
-  color: #261338;
-}
-.title {
-  color: #f2ecf8;
 }
 </style>

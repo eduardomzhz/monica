@@ -7,6 +7,7 @@ import App from './App.vue';
 import FeedForm from './components/FeedForm';
 import FeedList from './components/FeedList';
 import Home from './components/Home';
+import Settings from './components/Settings';
 
 Vue.use(Router);
 Vue.use(Buefy);
@@ -15,7 +16,8 @@ Vue.mixin(helpers);
 const routes = [
   { path: '/', component: Home },
   { path: '/feed-form', component: FeedForm },
-  { path: '/feed-list', component: FeedList }
+  { path: '/feed-list', component: FeedList },
+  { path: '/settings', component: Settings }
 ];
 
 new Vue({

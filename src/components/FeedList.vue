@@ -23,9 +23,9 @@
     </nav>
     <div v-if="selectedDay && selectedDay.feeds.length > 0">
       <div class="flex border-bottom">
-        <span class="list-header">HORA</span>
-        <span class="list-header">CANTIDAD</span>
-        <span class="list-header"></span>
+        <span class="list-header center">HORA</span>
+        <span class="list-header center">CANTIDAD</span>
+        <span class="list-header center"></span>
       </div>
       <div v-for="feed in (selectedDay ? selectedDay.feeds : [])" :key="feed.time" class="flex">
         <span class="center">{{ timeToString(feed.time) }}</span>
@@ -89,10 +89,6 @@ export default {
 </script>
 
 <style scoped>
-.list-header {
-  color: #261338;
-  text-align: center;
-}
 .no-results {
   padding: 2em 0;
 }

@@ -33,6 +33,11 @@ export default {
           route: '/feed-list',
           label: 'HISTORIAL'
         },
+        {
+          isActive: false,
+          route: '/settings',
+          label: 'AJUSTES'
+        }
       ]
     }
   },
