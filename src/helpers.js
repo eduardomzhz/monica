@@ -1,5 +1,18 @@
 export default {
   methods: {
+    /* -------- Dialogs methods -------- */
+    showToast(message) {
+      this.$buefy.toast.open({
+        message,
+        position: 'is-top'
+      });
+    },
+    showConfirm(message, callback) {
+      this.$buefy.dialog.confirm({
+        message,
+        onConfirm: callback
+      });
+    },
     /* -------- LocalStorage methods -------- */
     clearStorage() {
       localStorage.clear();

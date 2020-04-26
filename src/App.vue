@@ -179,6 +179,35 @@ export default {
 .app.dark .list-header {
   color: var(--light-purple);
 }
+.app.default ~ .notices .toast.is-dark {
+  color: var(--white);
+  background: var(--dark-purple);
+}
+.app.light ~ .notices .toast.is-dark,
+.app.dark ~ .notices .toast.is-dark {
+  color: var(--white);
+  background: var(--light-purple);
+}
+.app ~ .notices .toast {
+  border-radius: 0.3em;
+}
+.app ~ .dialog.modal .modal-card {
+  color: var(--white);
+}
+.app.default ~ .dialog.modal .modal-card section,
+.app.default ~ .dialog.modal .modal-card footer {
+  background-color: var(--dark-purple);
+}
+.app.light ~ .dialog.modal .modal-card section,
+.app.dark ~ .dialog.modal .modal-card section,
+.app.light ~ .dialog.modal .modal-card footer,
+.app.dark ~ .dialog.modal .modal-card footer {
+  background-color: var(--light-purple);
+}
+.app ~ .dialog.modal .modal-card footer button.is-primary {
+  background-color: var(--darker-purple);
+}
+
 .version {
   bottom: 0;
   font-size: 0.7em;

@@ -31,7 +31,7 @@
         <span class="center">{{ timeToString(feed.time) }}</span>
         <span class="center">{{ feed.quantity }} oz</span>
         <span class="center">
-          <button class="button is-small" @click="removeFeed(feed)">&times;</button>
+          <button class="button is-small" @click="confirmRemove(feed)">&times;</button>
         </span>
       </div>
     </div>
@@ -73,6 +73,10 @@ export default {
       }
       this.feedDays = feedTracking.days.sort((a, b) => b.date - a.date);
     },
+    confirmRemove(selectedFeed) {
+      const message = `¿Desea eliminar el registro de las ${this.timeToString(selectedFeed.time)}?`;
+      this.showConfirm(message, () => this.removeFeed(selectedFeed));
+    },
     removeFeed(selectedFeed) {
       const storedTracking = this.getStorage('feedTracking');
       const feedTracking = new FeedTracking(storedTracking.days);
@@ -83,7 +87,7 @@ export default {
       }
       this.setStorage('feedTracking', feedTracking);
       this.setFeedDay();
-    },
+    }
   }
 }
 </script>

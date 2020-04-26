@@ -76,6 +76,7 @@ export default {
         feedTracking.addDay(currentFeedDay);
       }
       this.setStorage('feedTracking', feedTracking);
+      this.showToast('Registro guardado.');
       this.reset();
     },
     reset() {
