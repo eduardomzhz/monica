@@ -15,6 +15,9 @@ export class FeedDay {
     this.feeds.push(feed);
     this.sortFeeds();
   }
+  getLastFeed() {
+    return this.feeds[this.feeds.length - 1];
+  }
   getTotal(feeds = this.feeds) {
     return feeds.reduce((last, current) => last + current.quantity, 0);
   }
@@ -47,6 +50,9 @@ export class FeedTracking {
   }
   getDay(date) {
     return this.days.find(day => day.date === date);
+  }
+  getLastDay() {
+    return this.days[this.days.length - 1];
   }
   removeDay(day) {
     const index = this.days.findIndex(_day => _day.date === day.date);

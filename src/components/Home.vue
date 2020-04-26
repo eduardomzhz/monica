@@ -52,29 +52,39 @@ export default {
       const appTime = this.timeToAppTime(new Date());
       const storedTracking = this.getStorage('feedTracking');
       const feedTracking = new FeedTracking(storedTracking.days);
-      let index = feedTracking.days.findIndex(day => day.date === appDate);
-      let currentDay = (index > -1)
+      const index = feedTracking.days.findIndex(day => day.date === appDate);
+      const currentDay = (index > -1)
         ? new FeedDay(appDate, feedTracking.days[index].feeds)
         : null;
       let prevDay = (index < 0)
-        ? feedTracking.days[feedTracking.days.length - 1]
+        ? feedTracking.getLastDay()
         : (feedTracking.days.length > 1)
           ? feedTracking.days[index - 1]
           : null;
       if (currentDay) {
-        let lastFeed = currentDay.feeds[currentDay.feeds.length - 1];
-        this.lastFeedTime = this.timeToString(lastFeed.time);
-        this.lastFeedQuantity = lastFeed.quantity;
+        const lastFeed = currentDay.getLastFeed();
         this.totalQuantity = currentDay.getTotal();
+        this.updateLastFeedData(lastFeed);
       }
       if (prevDay) {
         prevDay = new FeedDay(prevDay.date, prevDay.feeds);
+        const lastFeed = prevDay.getLastFeed();
         const prevDayQuantity = prevDay.getTotalBefore(appTime);
-        let diff = this.totalQuantity - prevDayQuantity;
+        const diff = this.totalQuantity - prevDayQuantity;
         this.prevDayFeedDiff = `${diff > 0 ? '+' : ''}${diff}`;
+        if (!this.lastFeedTime) {
+          this.updateLastFeedData(lastFeed);
+        }
       } else {
         this.prevDayFeedDiff = `${this.totalQuantity > 0 ? '+' : ''}${this.totalQuantity}`; 
       }
+    },
+    updateLastFeedData(lastFeed) {
+      const settings = this.getStorage('settings');
+      const nextFeedAppTime = this.addHoursToAppTime(lastFeed.time, settings.timeInterval);
+      this.nextFeedTime = this.timeToString(nextFeedAppTime);
+      this.lastFeedTime = this.timeToString(lastFeed.time);
+      this.lastFeedQuantity = lastFeed.quantity;
     }
   }
 }
@@ -85,6 +95,6 @@ export default {
   padding: 2em 0;
 }
 .level-item .title {
-  font-size: 2.2em;
+  font-size: 2em;
 }
 </style>

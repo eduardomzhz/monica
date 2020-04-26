@@ -17,6 +17,12 @@ export default {
       localStorage.setItem(key, formattedValue);
     },
     /* -------- DateTime methods -------- */
+    addHoursToAppTime(time, hours) {
+      let newTime = Number(time) + (hours * 100);
+      return (newTime < 2400)
+        ? `${newTime}`.padStart(4, '0')
+        : `${newTime - 2400}`.padStart(4, '0');
+    },
     dateToAppDate(date) {
       return [date.getFullYear(), date.getMonth() + 1, date.getDate()]
         .map(value => value < 10 ? `0${value}` : `${value}`).join('');
