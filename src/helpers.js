@@ -52,21 +52,20 @@ export default {
         minute: 'numeric', 
         hour12: false }
       );
-      return locale.replace(':', '');
+      return locale.replace(':', '').replace('24', '00');
     },
     timeToString(time) {
       let timeString = '';
       if (typeof(time) === 'string') {
         const hour = time.slice(0, 2);
         const minutes = time.slice(2, 4);
-        let fixedHour = (hour === '00')
+        let fixedHour = (hour === '00' || hour === '24')
           ? 12
-          : (hour <= 12) 
+          : (hour < 13) 
             ? hour
-            : (hour - 12 < 10)
-              ? `0${hour - 12}`
-              : `${hour - 12}`;
-        timeString = `${fixedHour}:${minutes} ${hour > 11 ? 'PM' : 'AM'}`;
+            : `${hour - 12}`;
+        fixedHour = `${fixedHour}`.padStart(2, '0');
+        timeString = `${fixedHour}:${minutes} ${hour > 11 && hour < 24 ? 'PM' : 'AM'}`;
       } else {
         timeString = time.toLocaleString('en-US', { 
           hour: 'numeric', 
