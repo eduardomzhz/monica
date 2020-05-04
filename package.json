@@ -1,7 +1,7 @@
 {
   "name": "monica",
   "description": "Mónica's feed tracking app.",
-  "version": "0.10.1",
+  "version": "0.10.2",
   "author": "Eduardo Martínez <eduardo.mzhz@gmail.com>",
   "license": "MIT",
   "private": true,
