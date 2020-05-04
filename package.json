@@ -1,7 +1,7 @@
 {
   "name": "monica",
   "description": "Mónica's feed tracking app.",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "author": "Eduardo Martínez <eduardo.mzhz@gmail.com>",
   "license": "MIT",
   "private": true,
@@ -33,6 +33,7 @@
     "css-loader": "^0.28.7",
     "file-loader": "^1.1.4",
     "html-webpack-plugin": "^3.2.0",
+    "uglifyjs-webpack-plugin": "^1.3.0",
     "vue-loader": "^13.0.5",
     "vue-template-compiler": "^2.4.4",
     "webpack": "^3.6.0",
