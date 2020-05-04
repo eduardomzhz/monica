@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import Chart from 'vue2-frappe'
 import Buefy from 'buefy';
 import 'buefy/dist/buefy.css';
 import helpers from './helpers';
@@ -10,6 +11,7 @@ import Home from './components/Home';
 import Settings from './components/Settings';
 
 Vue.use(Router);
+Vue.use(Chart);
 Vue.use(Buefy);
 Vue.mixin(helpers);
 

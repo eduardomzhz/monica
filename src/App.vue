@@ -60,7 +60,7 @@ export default {
 }
 .app {
   padding: 2em;
-  height: 100vh;
+  min-height: 100vh;
 }
 .app.default {
   background-color: var(--light-purple);

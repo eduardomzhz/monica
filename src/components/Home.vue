@@ -27,6 +27,21 @@
         <p class="title">{{ prevDayFeedDiff || 0 }} oz</p>
       </div>
     </div>
+    <div class="level-item has-text-centered full-width">
+      <div class="full-width">
+        <p class="heading">TENDENCIA {{ chartDays }} DIAS</p>
+        <p class="title">
+          <vue-frappe
+            id="test"
+            :labels="chartLabels"
+            :colors="[chartColor]"
+            :axisOptions="{ xAxisMode: 'thick', xIsSeries: 1 }"
+            :lineOptions="{ hideDots: 1 }"
+            :dataSets="chartData">
+        </vue-frappe>
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -40,13 +55,36 @@ export default {
       lastFeedTime: null,
       lastFeedQuantity: 0,
       totalQuantity: 0,
-      prevDayFeedDiff: 0
+      prevDayFeedDiff: 0,
+      chartColor: '',
+      chartDays: 30,
+      chartData: [{
+        chartType: 'line',
+        values: []
+      }],
+      chartLabels: []
     }
   },
   created() {
     this.updateData();
   },
   methods: {
+    setChartColor() {
+      const settings = this.getStorage('settings');
+      this.chartColor = (settings.theme === 'dark')
+        ? '#9966c8'
+        : '#663495';
+    },
+    updateChart(days) {
+      this.setChartColor();
+      this.chartData[0].values = [];
+      this.chartLabels = [];
+      days.forEach(day => {
+        const feedDay = new FeedDay(day.date, day.feeds);
+        this.chartData[0].values.push(feedDay.getTotal());
+        this.chartLabels.push(this.dateToString(feedDay.date));
+      });
+    },
     updateData() {
       const appDate = this.dateToAppDate(new Date());
       const appTime = this.timeToAppTime(new Date());
@@ -78,6 +116,8 @@ export default {
       } else {
         this.prevDayFeedDiff = `${this.totalQuantity > 0 ? '+' : ''}${this.totalQuantity}`; 
       }
+      const lastDays = feedTracking.days.slice(this.chartDays * -1);
+      this.updateChart(lastDays);
     },
     updateLastFeedData(lastFeed) {
       const settings = this.getStorage('settings');
@@ -92,9 +132,9 @@ export default {
 
 <style scoped>
 .level-item {
-  padding: 2em 0;
+  padding: 1.5em 0;
 }
 .level-item .title {
-  font-size: 2em;
+  font-size: 1.5em;
 }
 </style>
