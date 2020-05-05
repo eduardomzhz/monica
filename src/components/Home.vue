@@ -32,11 +32,13 @@
         <p class="heading">TENDENCIA {{ chartDays }} DIAS</p>
         <p class="title">
           <vue-frappe
-            id="test"
+            id="chart"
+            :height="200"
             :labels="chartLabels"
-            :colors="[chartColor]"
+            :colors="['#DB5461']"
             :axisOptions="{ xAxisMode: 'thick', xIsSeries: 1 }"
-            :lineOptions="{ hideDots: 1 }"
+            :lineOptions="{ hideDots: 1, regionFill: 1 }"
+            :tooltipOptions="{ formatTooltipY: (data) => `${data} oz` }"
             :dataSets="chartData">
         </vue-frappe>
         </p>
@@ -56,8 +58,7 @@ export default {
       lastFeedQuantity: 0,
       totalQuantity: 0,
       prevDayFeedDiff: 0,
-      chartColor: '',
-      chartDays: 30,
+      chartDays: 10,
       chartData: [{
         chartType: 'line',
         values: []
@@ -69,14 +70,7 @@ export default {
     this.updateData();
   },
   methods: {
-    setChartColor() {
-      const settings = this.getStorage('settings');
-      this.chartColor = (settings.theme === 'dark')
-        ? '#9966c8'
-        : '#663495';
-    },
     updateChart(days) {
-      this.setChartColor();
       this.chartData[0].values = [];
       this.chartLabels = [];
       days.forEach(day => {
