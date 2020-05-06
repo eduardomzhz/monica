@@ -84,6 +84,9 @@ export default {
   position: fixed;
   width: 100%;
 }
+.app > .navigation a {
+  font-size: 0.8em;
+}
 .app .tabs li {
   background-color: var(--purple);
 }
