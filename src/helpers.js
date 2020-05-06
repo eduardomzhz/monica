@@ -52,7 +52,7 @@ export default {
         minute: 'numeric', 
         hour12: false }
       );
-      return locale.replace(':', '').replace('24', '00');
+      return locale.replace('24:', '00:').replace(':', '');
     },
     timeToString(time) {
       let timeString = '';
