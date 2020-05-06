@@ -29,7 +29,7 @@
     </div>
     <div class="level-item has-text-centered full-width">
       <div class="full-width">
-        <p class="heading">TENDENCIA {{ chartDays }} DIAS</p>
+        <p class="heading">TENDENCIA {{ appSettings.chartDays }} DIAS</p>
         <p class="title">
           <vue-frappe
             id="chart"
@@ -58,15 +58,16 @@ export default {
       lastFeedQuantity: 0,
       totalQuantity: 0,
       prevDayFeedDiff: 0,
-      chartDays: 10,
       chartData: [{
         chartType: 'line',
         values: []
       }],
-      chartLabels: []
+      chartLabels: [],
+      appSettings: {}
     }
   },
   created() {
+    this.appSettings = this.getStorage('settings');
     this.updateData();
   },
   methods: {
@@ -110,12 +111,11 @@ export default {
       } else {
         this.prevDayFeedDiff = `${this.totalQuantity > 0 ? '+' : ''}${this.totalQuantity}`; 
       }
-      const lastDays = feedTracking.days.slice(this.chartDays * -1);
+      const lastDays = feedTracking.days.slice(this.appSettings.chartDays * -1);
       this.updateChart(lastDays);
     },
     updateLastFeedData(lastFeed) {
-      const settings = this.getStorage('settings');
-      const nextFeedAppTime = this.addHoursToAppTime(lastFeed.time, settings.timeInterval);
+      const nextFeedAppTime = this.addHoursToAppTime(lastFeed.time, this.appSettings.timeInterval);
       this.nextFeedTime = this.timeToString(nextFeedAppTime);
       this.lastFeedTime = this.timeToString(lastFeed.time);
       this.lastFeedQuantity = lastFeed.quantity;

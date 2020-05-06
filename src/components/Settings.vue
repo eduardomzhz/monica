@@ -23,6 +23,14 @@
         </div>
       </div>
     </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">DÍAS EN GRÁFICO</p>
+        <div class="control">
+          <input type="number" class="input" v-model="form.chartDays" @input="update">
+        </div>
+      </div>
+    </div>
   </nav>
 </template>
 
@@ -32,7 +40,8 @@ export default {
     return {
       form: {
         theme: null,
-        timeInterval: null
+        timeInterval: null,
+        chartDays: null
       },
       themes: [
         {

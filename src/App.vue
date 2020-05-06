@@ -25,18 +25,18 @@ export default {
     }
   },
   created() {
+    const storedSettings = this.getStorage('settings');
+    const defaultSettings = {
+      theme: 'default',
+      timeInterval: 3,
+      chartDays: 10
+    };
+    const settings = { ...defaultSettings, ...storedSettings };
+    this.setStorage('settings', settings);
     let feedTracking = this.getStorage('feedTracking');
     if (!feedTracking) {
       feedTracking = new FeedTracking();
       this.setStorage('feedTracking', feedTracking);
-    }
-    let settings = this.getStorage('settings');
-    if (!settings) {
-      settings = {
-        theme: 'default',
-        timeInterval: 3
-      };
-      this.setStorage('settings', settings);
     }
     this.update();
   },
