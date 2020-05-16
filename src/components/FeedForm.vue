@@ -37,7 +37,7 @@
       <div>
         <p class="heading"></p>
         <div class="field">
-          <button class="button" :disabled="!form.quantity" @click.prevent="save">GUARDAR</button>
+          <button class="button" :disabled="!canSave" @click.prevent="save">GUARDAR</button>
         </div>
       </div>
     </div>
@@ -55,6 +55,16 @@ export default {
         date: new Date(),
         quantity: null
       }
+    }
+  },
+  computed: {
+    canSave() {
+      return !!(
+        this.form.quantity 
+        && this.form.quantity >= 0 
+        && this.form.quantity <= 25
+        && this.form.quantity % 0.5 === 0
+      );
     }
   },
   methods: {

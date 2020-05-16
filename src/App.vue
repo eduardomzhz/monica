@@ -1,7 +1,7 @@
 <template>
   <div class="app" :class="theme">
     <div class="container">
-      <router-view @updateSettings="update" />
+      <router-view @updateTheme="updateTheme" />
     </div>
     <navigation />
     <span class="version">v{{ version }}</span>
@@ -38,10 +38,10 @@ export default {
       feedTracking = new FeedTracking();
       this.setStorage('feedTracking', feedTracking);
     }
-    this.update();
+    this.updateTheme();
   },
   methods: {
-    update() {
+    updateTheme() {
       let settings = this.getStorage('settings');
       this.theme = settings.theme;
     }

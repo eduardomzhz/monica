@@ -9,7 +9,7 @@
             v-model="form.theme"
             name="theme"
             :native-value="theme.name"
-            @input="update">
+            @input="saveTheme">
             {{ theme.label }}
           </b-radio>
         </div>
@@ -19,7 +19,7 @@
       <div>
         <p class="heading">TIEMPO ENTRE TOMAS (HORAS)</p>
         <div class="control">
-          <input type="number" class="input" v-model="form.timeInterval" @input="update">
+          <input type="number" class="input" v-model="form.timeInterval">
         </div>
       </div>
     </div>
@@ -27,7 +27,15 @@
       <div>
         <p class="heading">DÍAS EN GRÁFICO</p>
         <div class="control">
-          <input type="number" class="input" v-model="form.chartDays" @input="update">
+          <input type="number" class="input" v-model="form.chartDays">
+        </div>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading"></p>
+        <div class="field">
+          <button class="button" :disabled="!canSave" @click.prevent="save">GUARDAR</button>
         </div>
       </div>
     </div>
@@ -59,13 +67,31 @@ export default {
       ]
     }
   },
+  computed: {
+    canSave() {
+      return !!(
+        this.form.chartDays
+        && this.form.chartDays >= 2
+        && this.form.chartDays % 1 === 0
+        && this.form.chartDays <= 365
+        && this.form.timeInterval
+        && this.form.timeInterval >= 1
+        && this.form.timeInterval % 1 === 0
+        && this.form.timeInterval <= 24
+      );
+    }
+  },
   created() {
     this.form = { ...this.getStorage('settings') };
   },
   methods: {
-    update() {
+    save() {
       this.setStorage('settings', this.form);
-      this.$emit('updateSettings');
+      this.showToast('Ajustes actualizados.');
+    },
+    saveTheme() {
+      this.setStorage('settings', this.form);
+      this.$emit('updateTheme');
     }
   }
 }
